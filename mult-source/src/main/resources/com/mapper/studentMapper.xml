@@ -15,18 +15,27 @@
 		from mult_student ms
 	</select>
 
-	<!-- <select id="findByName" -->
-	<!-- parameterType="java.lang.String" -->
-	<!-- resultType="com.ljw.dao.entity.Emp"> -->
-	<!-- select * from t_emp where ename=#{ename} -->
-
-	<!-- </select> -->
-	<!-- 查询全部员工 -->
+	<select id="findByName" parameterType="java.lang.String" resultType="com.jw.domain.people.Student">
+		select 
+			ms.student_id as studentId,
+			ms.name as name,
+			ms.sex as sex,
+			ms.age as sex 
+		from 
+			mult_student ms 
+		where 
+			ms.name=#{name}
+	</select>
+	
+	<!-- 保存 -->
 	<insert id="save">
 		<selectKey resultType="long" keyProperty="studentId" order="AFTER">
 			SELECT LAST_INSERT_ID() AS id
 		</selectKey>
-		insert into mult_student (NAME,AGE,SEX) values (#{name},#{age},#{sex})
+		insert into mult_student 
+			(NAME,AGE,SEX) 
+		values 
+			(#{name},#{age},#{sex})
 	</insert>
 
 
