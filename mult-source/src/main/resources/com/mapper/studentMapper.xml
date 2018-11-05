@@ -11,7 +11,8 @@
 			ms.student_id as studentId,
 			ms.name as name,
 			ms.sex as sex,
-			ms.age as sex
+			ms.student_number as studentNumber,
+			ms.age as age
 		from mult_student ms
 	</select>
 
@@ -21,7 +22,8 @@
 			ms.student_id as studentId,
 			ms.name as name,
 			ms.sex as sex,
-			ms.age as sex 
+			ms.student_number as studentNumber,
+			ms.age as age 
 		from 
 			mult_student ms 
 		where 
@@ -31,9 +33,9 @@
 	<!-- 保存 -->
 	<insert id="save">
 		insert into mult_student 
-			(NAME,AGE,SEX) 
+			(name,age,sex,student_number) 
 		values 
-			(#{name},#{age},#{sex})
+			(#{name},#{age},#{sex},#{studentNumber})
 	</insert>
 
 
