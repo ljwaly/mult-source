@@ -5,7 +5,7 @@
 
 <mapper namespace="com.jw.mybatis.dao.StuDao">
 
-	<!-- 查询全部员工 -->
+	<!-- 查询全部学生 -->
 	<select id="findAll" resultType="com.jw.domain.people.Student">
 		select 
 			ms.student_id as studentId,
@@ -15,6 +15,7 @@
 		from mult_student ms
 	</select>
 
+	<!-- 根据名字查找 -->
 	<select id="findByName" parameterType="java.lang.String" resultType="com.jw.domain.people.Student">
 		select 
 			ms.student_id as studentId,
@@ -29,9 +30,6 @@
 	
 	<!-- 保存 -->
 	<insert id="save">
-		<selectKey resultType="long" keyProperty="studentId" order="AFTER">
-			SELECT LAST_INSERT_ID() AS id
-		</selectKey>
 		insert into mult_student 
 			(NAME,AGE,SEX) 
 		values 

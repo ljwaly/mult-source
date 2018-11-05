@@ -27,15 +27,24 @@ public class StudentController extends BaseController{
 		student.setName("fangyuan");
 		student.setAge(20L);
 		student.setSex("ccc");
-		int sti= stuDao.save(student);
+		int sti= stuDao.save(student);//影响范围
 		
 		Map<String, Object>  map = new HashMap<String, Object>();
 		
 		map.put("result", sti);
 		
+		return map;
 		
+	}
 	
+	@RequestMapping("/save/student")
+	public Map<String, Object> saveStudent(Student student){
 		
+		int influenceLineCounts= stuDao.save(student);
+		
+		Map<String, Object>  map = new HashMap<String, Object>();
+		
+		map.put("result", influenceLineCounts);
 		return map;
 		
 	}
