@@ -38,7 +38,7 @@ public class StudentController extends BaseController{
 		
 	}
 	
-	@RequestMapping("/getAll")
+	@RequestMapping("/findAll")
 	public Map<String, Object>  saveStudent(){
 		List<Student> findAll = stuDao.findAll();
 		
@@ -46,11 +46,7 @@ public class StudentController extends BaseController{
 		
 		map.put("result", findAll);
 		
-		
-	
-		
 		return map;
-		
 	}
 	
 	

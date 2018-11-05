@@ -1,0 +1,10 @@
+采用多数据源：
+
+jpa+H2数据库
+mybatis+mysql
+
+people包：mybaits
+movie包：jpa
+
+
+mybatis：不具备自动创建表的功能

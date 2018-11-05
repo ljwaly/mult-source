@@ -21,7 +21,7 @@ public class MovieController extends BaseController {
 	@Autowired
 	private MovieRepository movieRepository;
 	
-	@RequestMapping("/test")
+	@RequestMapping("/save")
 	public Map<String, Object> test(){
 		Map<String, Object>  map = new HashMap<String, Object>();
 		
@@ -35,7 +35,7 @@ public class MovieController extends BaseController {
 		return map;
 	}
 	
-	@RequestMapping("/getAll")
+	@RequestMapping("/findAll")
 	public Map<String, Object> getAllMovie(){
 		Map<String, Object>  map = new HashMap<String, Object>();
 		

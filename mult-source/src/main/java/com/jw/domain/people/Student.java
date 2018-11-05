@@ -18,7 +18,7 @@ import javax.persistence.UniqueConstraint;
  */
 
 @Entity
-@Table(name="TABLE_STU"/*,//表名字 
+@Table(name="mult_student"/*,//表名字 
 		uniqueConstraints = {@UniqueConstraint(columnNames = {"NAME"})}*/)//唯一约束
 public class Student implements Serializable {
 
