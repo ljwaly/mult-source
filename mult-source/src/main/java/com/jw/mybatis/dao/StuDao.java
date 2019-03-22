@@ -2,7 +2,6 @@ package com.jw.mybatis.dao;
 
 import java.util.List;
 
-import org.apache.catalina.authenticator.SavedRequest;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.jw.domain.people.Student;
@@ -19,4 +18,7 @@ public interface StuDao {
 	int save(Student student);
 	
 	List<Student> findByName(String name);
+	
+	List<Student> findByNameLike(String nameLike);
+	
 }

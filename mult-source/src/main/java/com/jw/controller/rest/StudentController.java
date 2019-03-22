@@ -80,5 +80,25 @@ public class StudentController extends BaseController{
 		return map;
 	}
 	
+	@RequestMapping("/nameLike/{name}")
+	public Map<String, Object>  findStudentByNameLike(@PathVariable (required = false) String name){
+		Map<String, Object>  map = new HashMap<String, Object>();
+		
+		if (StringUtil.isNullStr(name)) {
+			map.put("code", 410);
+			map.put("desc", "name is null");
+			return map;
+		}
+		
+		List<Student> findAll = stuDao.findByNameLike("%"+name+"%");
+		
+		
+		map.put("code", 200);
+		map.put("desc", "success");
+		map.put("result", findAll);
+		
+		return map;
+	}
+	
 	
 }

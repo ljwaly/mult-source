@@ -73,7 +73,14 @@
 		<dependency>
     		<groupId>mysql</groupId>
     		<artifactId>mysql-connector-java</artifactId>
- 		 </dependency>
+ 		</dependency>
+ 		
+ 		<!-- oracle数据库额外需要支持 -->
+ 		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.1.0.7.0</version>
+		</dependency>
 
 		<!-- 1.org.h2.Driver 的支持 -->
 		<dependency>

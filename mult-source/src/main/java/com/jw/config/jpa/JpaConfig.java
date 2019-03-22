@@ -20,8 +20,8 @@ import org.apache.jasper.runtime.PerThreadTagHandlerPool;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-		entityManagerFactoryRef = "mysqlEntityManagerFactory", 
-		transactionManagerRef = "mysqlTransactionManager",
+		entityManagerFactoryRef = "oracleEntityManagerFactory", 
+		transactionManagerRef = "oracleTransactionManager",
 		basePackages = {"com.jw.jpa.dao" })
 public class JpaConfig {
 	
@@ -33,8 +33,10 @@ public class JpaConfig {
     private DataSource dataSource;
 	
 	
-	@Bean(name = "mysqlEntityManagerFactory")
+	@Bean(name = "oracleEntityManagerFactory")
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder){
+		jpaProperties.setDatabasePlatform("ORACLE");
+		
 		Map<String, String> hibernateProperties = jpaProperties.getHibernateProperties(dataSource);
 		return builder
 				.dataSource(dataSource)
@@ -44,42 +46,12 @@ public class JpaConfig {
 				.build();
 	}
 	
-	@Bean(name = "mysqlTransactionManager")
+	@Bean(name = "oracleTransactionManager")
 	public PlatformTransactionManager transactionManager(EntityManagerFactoryBuilder builder){
 		return new JpaTransactionManager(entityManagerFactory(builder).getObject());
 		
 	}
 
 	
-//	@Bean(name = "mysqlEntityManagerFactory")
-//	@Autowired
-//	@Qualifier("datasourceMovie")
-//	public EntityManagerFactory entityManagerFactory(DataSource datasource) {
-//		
-//		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-//		vendorAdapter.setGenerateDdl(true);
-//		vendorAdapter.setShowSql(true);
-//		
-//		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-//		factory.setJpaVendorAdapter(vendorAdapter);
-//		factory.setDataSource(datasource);
-//		factory.setPackagesToScan("com.jw.domain.movie");//实体类放到com.jw.domain.movie下
-//		Properties jpaProperties = new Properties();
-//		jpaProperties.put("hibernate.ejb.naming_strategy", "org.hibernate.cfg.ImprovedNamingStrategy");// 命名策略
-//		factory.setJpaProperties(jpaProperties);
-//		factory.afterPropertiesSet();
-//		
-//		
-//		return factory.getObject();
-//
-//	}
 
-//	@Bean(name = "mysqlTransactionManager")
-//	@Autowired
-//	@Qualifier("datasourceMovie")
-//	public PlatformTransactionManager transactionManagerSecondary(DataSource datasource) {
-//		JpaTransactionManager txManager = new JpaTransactionManager();
-//		txManager.setEntityManagerFactory(entityManagerFactory(datasource));
-//		return txManager;
-//	}
 }

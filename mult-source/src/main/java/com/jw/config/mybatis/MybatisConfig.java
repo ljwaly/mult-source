@@ -14,10 +14,10 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @Configuration
-@MapperScan(basePackages ="com.jw.mybatis.dao",sqlSessionFactoryRef="oracleSessionFactory")
+@MapperScan(basePackages ="com.jw.mybatis.dao",sqlSessionFactoryRef="mysqlSessionFactory")
 public class MybatisConfig {
 
-    @Bean(name="oracleSessionFactory")
+    @Bean(name="mysqlSessionFactory")
     @Autowired
     @Qualifier("datasourcePeople")
     public SqlSessionFactory sqlSessionFactory(DataSource datasource) throws Exception {

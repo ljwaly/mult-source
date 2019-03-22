@@ -30,6 +30,20 @@
 			ms.name=#{name}
 	</select>
 	
+	<!-- 根据名字查找 -->
+	<select id="findByNameLike" parameterType="java.lang.String" resultType="com.jw.domain.people.Student">
+		select 
+			ms.student_id as studentId,
+			ms.name as name,
+			ms.sex as sex,
+			ms.student_number as studentNumber,
+			ms.age as age 
+		from 
+			mult_student ms 
+		where 
+			ms.name like #{name}
+	</select>
+	
 	<!-- 保存 -->
 	<insert id="save">
 		insert into mult_student 
